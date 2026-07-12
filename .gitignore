@@ -1,0 +1,895 @@
+# ============================================================================ #
+#                    TEVANOXMOVIE - MASTER .GITIGNORE                         #
+#                    Domain: tevanox.com                                       #
+#                    Version: 1.0.0                                            #
+# ============================================================================ #
+
+# ============================================================================ #
+# 1. OPERATING SYSTEM FILES                                                   #
+# ============================================================================ #
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+*.swp
+*.swo
+*.swn
+*.swm
+*.orig
+*.rej
+
+# ============================================================================ #
+# 2. IDE / EDITOR FILES                                                       #
+# ============================================================================ #
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+*.vsix
+.vscode-test/
+
+# IntelliJ IDEA / WebStorm / PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
+*.class
+*.jar
+*.war
+*.ear
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+.sublime/
+*.sublime-*
+
+# Atom
+.atom/
+*.atom
+
+# Vim
+*.vim
+*.vimrc
+*.gvimrc
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# ============================================================================ #
+# 3. NODE.JS / NPM / YARN                                                    #
+# ============================================================================ #
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+.pnpm-store/
+
+# Yarn
+.yarn/
+.yarnrc
+.yarnclean
+.yarn-integrity
+
+# NPM
+package-lock.json
+npm-shrinkwrap.json
+
+# Pnpm
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# ============================================================================ #
+# 4. PYTHON / BACKEND FILES                                                   #
+# ============================================================================ #
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.pyo
+*.pyc
+
+# Python distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Python virtual environments
+venv/
+env/
+ENV/
+.env/
+.venv/
+.venv/
+venv.bak/
+env.bak/
+
+# Python test coverage
+.coverage
+.coverage.*
+.coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+htmlcov/
+.tox/
+.nox/
+*.log
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# Python tools
+*.prof
+.pyinstaller/
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================================================ #
+# 5. REACT NATIVE / MOBILE APP FILES                                         #
+# ============================================================================ #
+
+# React Native
+android/app/build/
+android/app/src/main/res/raw/
+android/app/src/main/res/drawable/
+android/app/src/main/res/mipmap/
+android/.gradle/
+android/.idea/
+android/app/local.properties
+android/app/*.iml
+android/*.iml
+android/local.properties
+android/keystores/
+android/key.properties
+
+# iOS
+ios/Pods/
+ios/build/
+ios/*.xcworkspace/xcshareddata/
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcworkspace/
+ios/*.xcodeproj/
+ios/*.xcuserstate
+ios/*.xcscmblueprint
+ios/*.xccheckout
+ios/DerivedData/
+ios/Podfile.lock
+ios/.generated/
+ios/*.app/
+ios/*.ipa
+ios/*.dSYM.zip
+ios/*.symbols.zip
+ios/*.app.dSYM
+
+# Expo
+.expo/
+expo-*
+.expo-shared/
+.expo-web/
+dist/
+.expo-packager-state
+.expo-error-reporter
+.expo-settings.json
+.expo-uploads/
+
+# React Native Metro
+metro-*
+*.tmp
+*.temp
+*.swp
+
+# React Native Fast Refresh
+.haste-map-*
+.haste-metrics-*
+
+# ============================================================================ #
+# 6. ENVIRONMENT VARIABLES                                                    #
+# ============================================================================ #
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.staging
+.env.uat
+.env.ci
+.env.dev
+.env.qa
+
+# Secrets
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+*.keystore
+*.jks
+*.kdb
+*.jceks
+*.p8
+*.p7b
+*.cer
+*.der
+
+# ============================================================================ #
+# 7. APPLICATION-SPECIFIC FILES                                              #
+# ============================================================================ #
+
+# TevanoxMovie specific
+uploads/
+media/
+temp/
+tmp/
+storage/
+logs/
+*.log
+*.tmp
+*.temp
+
+# Backend
+apps/tevanoxmovie-backend/.env
+apps/tevanoxmovie-backend/*.db
+apps/tevanoxmovie-backend/*.sqlite
+apps/tevanoxmovie-backend/*.sqlite3
+apps/tevanoxmovie-backend/migrations/
+apps/tevanoxmovie-backend/__pycache__/
+apps/tevanoxmovie-backend/.pytest_cache/
+apps/tevanoxmovie-backend/.coverage
+apps/tevanoxmovie-backend/htmlcov/
+apps/tevanoxmovie-backend/logs/
+apps/tevanoxmovie-backend/media/
+apps/tevanoxmovie-backend/staticfiles/
+apps/tevanoxmovie-backend/static/
+apps/tevanoxmovie-backend/.env.local
+apps/tevanoxmovie-backend/.env.production
+apps/tevanoxmovie-backend/.env.development
+
+# Web App
+apps/tevanoxmovie-web/.env
+apps/tevanoxmovie-web/.env.local
+apps/tevanoxmovie-web/.env.production
+apps/tevanoxmovie-web/dist/
+apps/tevanoxmovie-web/build/
+apps/tevanoxmovie-web/.cache/
+apps/tevanoxmovie-web/.parcel-cache/
+apps/tevanoxmovie-web/node_modules/
+apps/tevanoxmovie-web/coverage/
+apps/tevanoxmovie-web/.storybook/
+apps/tevanoxmovie-web/storybook-static/
+apps/tevanoxmovie-web/.next/
+apps/tevanoxmovie-web/out/
+apps/tevanoxmovie-web/.output/
+apps/tevanoxmovie-web/.nuxt/
+
+# Admin Dashboard
+apps/tevanoxmovie-admin/.env
+apps/tevanoxmovie-admin/.env.local
+apps/tevanoxmovie-admin/.env.production
+apps/tevanoxmovie-admin/dist/
+apps/tevanoxmovie-admin/build/
+apps/tevanoxmovie-admin/node_modules/
+apps/tevanoxmovie-admin/.cache/
+apps/tevanoxmovie-admin/coverage/
+
+# Mobile App
+apps/tevanoxmovie-mobile/.env
+apps/tevanoxmovie-mobile/.env.local
+apps/tevanoxmovie-mobile/.env.production
+apps/tevanoxmovie-mobile/node_modules/
+apps/tevanoxmovie-mobile/android/app/build/
+apps/tevanoxmovie-mobile/android/.gradle/
+apps/tevanoxmovie-mobile/ios/Pods/
+apps/tevanoxmovie-mobile/ios/build/
+apps/tevanoxmovie-mobile/coverage/
+apps/tevanoxmovie-mobile/.expo/
+apps/tevanoxmovie-mobile/.generated/
+apps/tevanoxmovie-mobile/.tmp/
+apps/tevanoxmovie-mobile/.temp/
+
+# Sales Agent App
+apps/tevanoxmovie-sales-agent/.env
+apps/tevanoxmovie-sales-agent/.env.local
+apps/tevanoxmovie-sales-agent/.env.production
+apps/tevanoxmovie-sales-agent/node_modules/
+apps/tevanoxmovie-sales-agent/android/app/build/
+apps/tevanoxmovie-sales-agent/android/.gradle/
+apps/tevanoxmovie-sales-agent/ios/Pods/
+apps/tevanoxmovie-sales-agent/ios/build/
+apps/tevanoxmovie-sales-agent/coverage/
+apps/tevanoxmovie-sales-agent/.expo/
+apps/tevanoxmovie-sales-agent/.generated/
+
+# Shared
+apps/tevanoxmovie-shared/node_modules/
+apps/tevanoxmovie-shared/dist/
+apps/tevanoxmovie-shared/build/
+
+# ============================================================================ #
+# 8. INFRASTRUCTURE & DEPLOYMENT                                              #
+# ============================================================================ #
+
+# Docker
+*.dockerignore
+*.dockerignore-tmp
+*.docker-ignore
+*.dockerfile-tmp
+
+# Kubernetes
+*.kubeconfig
+*.kubeconfig.*
+*.kubeconfig-*
+*.kubeconfig-tmp
+*.kubectl
+*.helm
+*.helmignore
+*.tpl
+*.tgz
+
+# SSL Certificates
+infrastructure/nginx/ssl/*.crt
+infrastructure/nginx/ssl/*.key
+infrastructure/nginx/ssl/*.pem
+infrastructure/nginx/ssl/*.p12
+infrastructure/nginx/ssl/*.pfx
+infrastructure/nginx/ssl/*.csr
+infrastructure/nginx/ssl/*.jks
+infrastructure/nginx/ssl/private/
+infrastructure/nginx/ssl/certs/
+infrastructure/nginx/ssl/archive/
+infrastructure/nginx/ssl/renewal/
+infrastructure/nginx/ssl/live/
+infrastructure/nginx/ssl/keys/
+
+# Certbot
+infrastructure/nginx/ssl/letsencrypt/
+infrastructure/certbot/
+certbot/
+*.letsencrypt
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+*.tfvars.json
+*.terraform.lock.hcl
+
+# Ansible
+*.retry
+*.ansible
+inventory/
+hosts
+hosts.ini
+
+# ============================================================================ #
+# 9. LOGS & CACHE                                                             #
+# ============================================================================ #
+
+# Logs
+logs/
+*.log
+*.err
+*.out
+*.trace
+*.debug
+*.info
+*.warn
+*.error
+*.fatal
+*.access
+*.audit
+*.syslog
+
+# Cache
+.cache/
+cache/
+*.cache
+*.cached
+*.cach
+*.caché
+*.cachem
+*.cache-meta
+
+# Temp files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*.pid
+*.lock
+*.lck
+*.stale
+
+# ============================================================================ #
+# 10. TESTING & COVERAGE                                                      #
+# ============================================================================ #
+
+# Test coverage
+coverage/
+*.coverage
+*.coverage.*
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.pyre/
+.hypothesis/
+
+# Test reports
+test-reports/
+test-results/
+junit.xml
+pytest.xml
+*.test-result
+*.test-report
+*.spec-report
+
+# ============================================================================ #
+# 11. DATABASE FILES                                                          #
+# ============================================================================ #
+
+# MongoDB
+*.bson
+*.mongodb
+*.mongo
+*.mongodump
+dump/
+mongodump/
+mongorestore/
+
+# SQLite
+*.db
+*.db3
+*.sqlite
+*.sqlite3
+*.db-journal
+*.wal
+*.shm
+
+# PostgreSQL
+*.pgdump
+*.psql
+*.sql.gz
+*.sql.bz2
+
+# Redis
+*.rdb
+*.aof
+*.redis
+dump.rdb
+appendonly.aof
+
+# ============================================================================ #
+# 12. MISCELLANEOUS                                                           #
+# ============================================================================ #
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.bz2
+*.xz
+*.lz
+*.lzma
+*.zst
+*.Z
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.copy
+*.copy-*
+*.~*
+*~
+
+# Media files (ignore large media)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.flv
+*.wmv
+*.m4v
+*.mpg
+*.mpeg
+*.3gp
+*.3g2
+*.ogv
+
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+*.wma
+*.m4a
+*.opus
+
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.bmp
+*.tiff
+*.webp
+*.ico
+*.heic
+
+# ============================================================================ #
+# 13. GIT FILES                                                               #
+# ============================================================================ #
+
+# Git
+.git/
+.gitignore
+.gitattributes
+.gitmodules
+.gitkeep
+.gitlab-ci.yml
+.gitignore
+.gitkeep
+.git-blame-ignore-revs
+
+# ============================================================================ #
+# 14. CI/CD FILES                                                             #
+# ============================================================================ #
+
+# GitHub Actions
+.github/
+.github/*.yml
+.github/*.yaml
+
+# GitLab CI
+.gitlab-ci.yml
+.gitlab-ci/*.yml
+
+# Jenkins
+Jenkinsfile
+.jenkins/
+*.jenkins
+*.jenkinsfile
+
+# CircleCI
+.circleci/
+.circleci/*.yml
+
+# Travis
+.travis.yml
+.travis/
+
+# ============================================================================ #
+# 15. SECURITY                                                                #
+# ============================================================================ #
+
+# Security files
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+*.jks
+*.keystore
+*.truststore
+*.srl
+*.der
+*.cer
+*.kdb
+*.jceks
+*.p8
+*.p7b
+*.gpg
+*.asc
+*.sig
+*.sign
+*.encrypted
+*.enc
+*.cipher
+*.secret
+*.token
+*.api-key
+*.apikey
+*.apikeys
+*.secretkey
+*.privatekey
+*.publickey
+*.passphrase
+*.password
+*.credential
+*.credentials
+*.creds
+*.auth
+*.authkey
+*.auth-token
+*.authtoken
+*.jwt
+*.jwk
+*.jws
+*.jwe
+
+# AWS
+*.aws/
+*.aws-*
+*.aws*
+.aws/
+.aws-credentials
+.aws-config
+
+# Azure
+*.azure/
+*.azure-*
+*.azure*
+.azure/
+.azure-credentials
+.azure-config
+
+# GCP
+*.gcp/
+*.gcp-*
+*.gcp*
+.gcp/
+.gcp-credentials
+.gcp-config
+*.service-account.json
+*.service-account-key.json
+*.gcloud
+*.gcloud-*
+
+# ============================================================================ #
+# 16. PROJECT-SPECIFIC                                                        #
+# ============================================================================ #
+
+# TevanoxMovie specific
+*.tevanox
+*.tevanox-*
+*.tevanox*
+tevanox/
+tevanox-*
+tevanox*
+*.movie
+*.movies
+*.stream
+
+# MinIO
+minio/
+minio-data/
+minio-*
+*.minio
+*.minio-*
+*.minio*
+
+# Nginx
+nginx/
+*.nginx
+*.nginx-*
+*.nginx*
+*.pid.nginx
+*.sock.nginx
+
+# Supervisor
+*.supervisor
+*.supervisor-*
+*.supervisor*
+*.pid.supervisor
+*.sock.supervisor
+
+# Celery
+*.celery
+*.celery-*
+*.celery*
+*.pid.celery
+*.sock.celery
+celerybeat-schedule
+celerybeat.pid
+
+# Redis
+*.redis
+*.redis-*
+*.redis*
+*.pid.redis
+*.sock.redis
+*.rdb.redis
+*.aof.redis
+
+# RabbitMQ
+*.rabbitmq
+*.rabbitmq-*
+*.rabbitmq*
+*.pid.rabbitmq
+*.sock.rabbitmq
+
+# ============================================================================ #
+# 17. DEVELOPMENT TOOLS                                                       #
+# ============================================================================ #
+
+# Pre-commit
+.pre-commit-config.yaml
+.pre-commit-hooks.yaml
+.pre-commit/
+
+# Husky
+.husky/
+.husky/_/
+.husky/.gitignore
+.husky/pre-commit
+.husky/pre-push
+.husky/commit-msg
+
+# Lint-staged
+.lintstagedrc
+.lintstagedrc.json
+.lintstagedrc.yaml
+.lintstagedrc.yml
+.lintstagedrc.js
+
+# ESLint
+.eslintcache
+.eslintignore
+.eslintrc
+.eslintrc.json
+.eslintrc.yaml
+.eslintrc.yml
+.eslintrc.js
+.eslintrc.cjs
+
+# Prettier
+.prettiercache
+.prettierignore
+.prettierrc
+.prettierrc.json
+.prettierrc.yaml
+.prettierrc.yml
+.prettierrc.js
+.prettierrc.cjs
+
+# Stylelint
+.stylelintcache
+.stylelintignore
+.stylelintrc
+.stylelintrc.json
+.stylelintrc.yaml
+.stylelintrc.yml
+.stylelintrc.js
+.stylelintrc.cjs
+
+# ============================================================================ #
+# 18. MONITORING & ANALYTICS                                                 #
+# ============================================================================ #
+
+# Sentry
+.sentry/
+.sentryclirc
+.sentry-*
+*.sentry
+*.sentry-*
+
+# DataDog
+.datadog/
+.datadog-*
+*.datadog
+*.datadog-*
+
+# New Relic
+.newrelic/
+.newrelic-*
+*.newrelic
+*.newrelic-*
+
+# Prometheus
+prometheus/
+*.prometheus
+*.prometheus-*
+prometheus-*
+*.prom
+
+# Grafana
+grafana/
+*.grafana
+*.grafana-*
+grafana-*
+
+# ============================================================================ #
+# 19. BOWER (Deprecated)                                                      #
+# ============================================================================ #
+
+bower_components/
+.bower-cache/
+.bower-registry/
+.bower-tmp/
+.bower.json
+bower.json
+
+# ============================================================================ #
+# 20. FINAL                                                                   #
+# ============================================================================ #
+
+# Always keep this file
+!.gitkeep
+!.gitignore
+
+# Always keep these directories
+!apps/
+!infrastructure/
+!scripts/
+!docs/
