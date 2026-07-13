@@ -1,5 +1,13 @@
+# ============================================================================ #
+#                    TEVANOXMOVIE DOCKER COMPOSE                             #
+# ============================================================================ #
+
 version: '3.8'
+
 services:
+  # ========================================================================== #
+  # MONGODB DATABASE                                                           #
+  # ========================================================================== #
   mongodb:
     image: mongo:6.0
     container_name: tevanoxmovie-mongodb
@@ -8,61 +16,131 @@ services:
       - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: 1
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-tevanox123}
       MONGO_INITDB_DATABASE: tevanoxmovie
     volumes:
       - mongodb_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
       - tevanox-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
+  # ========================================================================== #
+  # REDIS CACHE                                                                #
+  # ========================================================================== #
+  redis:
+    image: redis:7.2-alpine
+    container_name: tevanoxmovie-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - tevanox-network
+    healthcheck:
+      test: redis-cli ping
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ========================================================================== #
+  # BACKEND API                                                                #
+  # ========================================================================== #
   backend:
     build:
       context: ../apps/tevanoxmovie-backend
-      dockerfile: Dockerfile
+      dockerfile: ../../infrastructure/docker/backend.Dockerfile
     container_name: tevanoxmovie-backend
     restart: always
     ports:
       - "8000:8000"
     environment:
-      MONGO_URI: mongodb://admin:1@mongodb:27017
-      SECRET_KEY: 17b3d627aed12b8f47b3b0ca6d0edc66279173e65f59f6580f8b7a419143ffb7
-      DOMAIN: tevanox.com
+      MONGO_URI: mongodb://admin:${MONGO_PASSWORD:-tevanox123}@mongodb:27017
+      REDIS_URL: redis://redis:6379
+      SECRET_KEY: ${SECRET_KEY}
       API_URL: https://api.tevanox.com
+      WEB_URL: https://tevanox.com
+      ADMIN_URL: https://admin.tevanox.com
+      STORAGE_ENDPOINT: https://storage.tevanox.com
+      STORAGE_ACCESS_KEY: ${STORAGE_ACCESS_KEY}
+      STORAGE_SECRET_KEY: ${STORAGE_SECRET_KEY}
+      STORAGE_BUCKET: tevanoxmovie
+      PAYSTACK_SECRET_KEY: ${PAYSTACK_SECRET_KEY}
+      PAYSTACK_PUBLIC_KEY: ${PAYSTACK_PUBLIC_KEY}
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ../apps/tevanoxmovie-backend:/app
+      - backend_logs:/app/logs
     networks:
       - tevanox-network
+    healthcheck:
+      test: curl -f http://localhost:8000/health || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
+  # ========================================================================== #
+  # WEB APP                                                                    #
+  # ========================================================================== #
   web:
     build:
       context: ../apps/tevanoxmovie-web
-      dockerfile: Dockerfile
+      dockerfile: ../../infrastructure/docker/web.Dockerfile
     container_name: tevanoxmovie-web
     restart: always
     ports:
       - "3000:3000"
     environment:
       VITE_API_URL: https://api.tevanox.com/api/v1
+      VITE_APP_URL: https://tevanox.com
+      VITE_DOMAIN: tevanox.com
     depends_on:
       - backend
     networks:
       - tevanox-network
+    healthcheck:
+      test: wget --quiet --tries=1 --spider http://localhost:3000 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
+  # ========================================================================== #
+  # ADMIN DASHBOARD                                                            #
+  # ========================================================================== #
   admin:
     build:
       context: ../apps/tevanoxmovie-admin
-      dockerfile: Dockerfile
+      dockerfile: ../../infrastructure/docker/admin.Dockerfile
     container_name: tevanoxmovie-admin
     restart: always
     ports:
       - "3001:3001"
     environment:
       VITE_API_URL: https://api.tevanox.com/api/v1
+      VITE_APP_URL: https://admin.tevanox.com
+      VITE_DOMAIN: tevanox.com
     depends_on:
       - backend
     networks:
       - tevanox-network
+    healthcheck:
+      test: wget --quiet --tries=1 --spider http://localhost:3001 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
+  # ========================================================================== #
+  # NGINX REVERSE PROXY                                                        #
+  # ========================================================================== #
   nginx:
     image: nginx:alpine
     container_name: tevanoxmovie-nginx
@@ -71,8 +149,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
       - certbot_data:/var/www/certbot
     depends_on:
       - web
@@ -80,7 +158,15 @@ services:
       - backend
     networks:
       - tevanox-network
+    healthcheck:
+      test: wget --quiet --tries=1 --spider http://localhost:80 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
+  # ========================================================================== #
+  # CERTBOT (SSL)                                                              #
+  # ========================================================================== #
   certbot:
     image: certbot/certbot:latest
     container_name: tevanoxmovie-certbot
@@ -89,10 +175,25 @@ services:
       - certbot_data:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $$!; done;'"
 
+# ============================================================================ #
+# NETWORKS                                                                     #
+# ============================================================================ #
 networks:
   tevanox-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
 
+# ============================================================================ #
+# VOLUMES                                                                      #
+# ============================================================================ #
 volumes:
   mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+  backend_logs:
+    driver: local
   certbot_data:
+    driver: local
