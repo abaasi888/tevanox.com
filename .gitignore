@@ -892,4 +892,5 @@ bower.json
 !apps/
 !infrastructure/
 !scripts/
-!docs/
+!docs/node_modules/
+**/node_modules/
