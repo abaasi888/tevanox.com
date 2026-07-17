@@ -1,0 +1,32 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '13.0'
+
+target 'TevanoxMovie' do
+  config = use_native_modules!
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :hermes_enabled => true
+  )
+
+  pod 'react-native-video', :path => '../node_modules/react-native-video'
+  pod 'react-native-track-player', :path => '../node_modules/react-native-track-player'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+  pod 'react-native-linear-gradient', :path => '../node_modules/react-native-linear-gradient'
+  pod 'react-native-pager-view', :path => '../node_modules/react-native-pager-view'
+  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+  pod 'react-native-screens', :path => '../node_modules/react-native-screens'
+  pod 'react-native-gesture-handler', :path => '../node_modules/react-native-gesture-handler'
+  pod 'react-native-async-storage/async-storage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
+  target 'TevanoxMovieTests' do
+    inherit! :complete
+  end
+
+  post_install do |installer|
+    react_native_post_install(installer)
+  end
+end

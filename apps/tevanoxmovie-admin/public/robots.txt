@@ -1,0 +1,18 @@
+# robots.txt for TevanoxMovie Admin
+
+User-agent: *
+Disallow: /
+
+# Admin dashboard should not be indexed
+# Allow only if you want search engines to index
+# User-agent: *
+# Allow: /
+# Disallow: /api/
+# Disallow: /private/
+# Disallow: /settings/
+
+# Crawl delay
+Crawl-delay: 10
+
+# Sitemap
+# Sitemap: https://admin.tevanox.com/sitemap.xml
